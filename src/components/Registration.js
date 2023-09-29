@@ -1,23 +1,21 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
-import {Paper} from "@mui/material";
+import { Paper } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import "../assets/css/AuthRegistration.scss";
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: "dark",
   },
 });
-
 
 function Registration({
   toggleForm,
@@ -117,6 +115,7 @@ function Registration({
             </FormControl>
           </div>
           <Button
+            id="register-button"
             variant="contained"
             size="medium"
             type="submit"
@@ -125,9 +124,16 @@ function Registration({
             Let's Create an Account
           </Button>
         </form>
-        <p style={{ marginTop: "1rem" }}>
-          Already have an account? <span onClick={toggleForm}>Login</span>
-        </p>
+        <p style={{ marginTop: "1rem" }}>Already have an account?</p>
+        <Button
+          id="login-button"
+          variant="contained"
+          size="small"
+          onClick={toggleForm}
+          style={{ marginRight: "1rem" }}
+        >
+          Login
+        </Button>
       </Paper>
     </ThemeProvider>
   );

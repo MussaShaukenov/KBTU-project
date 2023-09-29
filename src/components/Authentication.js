@@ -1,18 +1,19 @@
 import React from "react";
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Input from '@mui/material/Input';
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { Paper } from "@mui/material";
+import "../assets/css/AuthRegistration.scss";
 
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
-
-const lightTheme = createTheme({
+const darkTheme = createTheme({
   palette: {
-    type: 'dark', // Set to 'light' for a light theme
+    mode: "dark",
   },
 });
 
@@ -25,67 +26,86 @@ function Authentication({
   formData,
 }) {
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <div>
+      <Paper elevation={2} style={{ padding: "2rem" }}>
         <div>
-          <h1>Login</h1>
-        </div>
-        <form onSubmit={handleFormSubmit}>
-          <div className="input-container">
-            <TextField
-              variant="outlined"
-              required
-              id="username"
-              label="Username or Email"
-              name="username"
-              autoFocus
-              value={formData.username}
-              onChange={handleInputChange}
-              style={{ marginBottom: '1rem' }}
-            />
+          <div>
+            <h1>Login</h1>
           </div>
-          <div className="input-container">
-            <FormControl variant="outlined">
-              <InputLabel htmlFor="password">Password</InputLabel>
-              <Input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
+          <form onSubmit={handleFormSubmit}>
+            <div className="input-container">
+              <TextField
+                variant="outlined"
                 required
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={toggleViewPassword}
-                      edge="end"
-                    >
-                      {showPassword ? (
-                        <i className="fas fa-eye-slash"></i>
-                      ) : (
-                        <i className="fas fa-eye"></i>
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
+                id="username"
+                label="Username or Email"
+                name="username"
+                autoFocus
+                value={formData.username}
+                onChange={handleInputChange}
+                style={{ marginBottom: "1rem" }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircleIcon />
+                    </InputAdornment>
+                  ),
+                }}
               />
-            </FormControl>
-          </div>
+            </div>
+            <div className="input-container">
+              <FormControl variant="outlined">
+                <TextField
+                  id="password"
+                  label="Password"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        {showPassword ? (
+                          <VisibilityOffIcon
+                            onClick={toggleViewPassword}
+                            style={{ cursor: "pointer" }}
+                          />
+                        ) : (
+                          <VisibilityIcon
+                            onClick={toggleViewPassword}
+                            style={{ cursor: "pointer" }}
+                          />
+                        )}
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </FormControl>
+            </div>
+            <Button
+              id="register-button"
+              variant="contained"
+              size="medium"
+              type="submit"
+              style={{ marginTop: "1rem" }}
+            >
+              Let's Dive
+            </Button>
+          </form>
+          <p style={{ marginTop: "1rem" }}>You're not connected yet?</p>
           <Button
+            id="login-button"
             variant="contained"
-            size="medium"
-            type="submit"
-            style={{ marginTop: '1rem' }}
+            size="small"
+            onClick={toggleForm}
+            style={{ marginRight: "1rem" }}
           >
-            Let's Dive
+            Register
           </Button>
-        </form>
-        <p style={{ marginTop: '1rem' }}>
-          Don't have an account? <span onClick={toggleForm}>Sign up</span>
-        </p>
-      </div>
+        </div>
+      </Paper>
     </ThemeProvider>
   );
 }

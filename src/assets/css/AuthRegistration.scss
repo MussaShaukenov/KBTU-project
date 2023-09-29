@@ -1,0 +1,25 @@
+$hoverColor: #FBE4d8;
+
+#login-button {
+  margin: 0;
+  padding: 5px 0;
+  width: 7%;
+  background-color: aliceblue;
+  color: black;
+
+  &:hover {
+    background-color: $hoverColor;
+    box-shadow: 0 0 10px whitesmoke;
+  }
+}
+#register-button {
+  margin: 0;
+  padding: 5px 0;
+  width: 7%;
+
+  &:hover {
+    background-color: $hoverColor;
+    box-shadow: 0 0 10px whitesmoke;
+    color: black;
+  }
+}
