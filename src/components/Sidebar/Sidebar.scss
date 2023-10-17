@@ -1,0 +1,83 @@
+$gray: #16181C;
+$blue: #1c9bef;
+
+.full-height-sidebar {
+  min-width: 25vw;
+  max-width: 30vw;
+  border-left: 2px solid gray;
+  background: black;
+  padding-left: 2wh;
+  span {
+
+    width: inherit;
+    height: 1.5em;
+    input {
+      background: $gray;
+      border: 1px solid $blue;
+      color: $blue;
+      border-radius: 25px;
+      max-height: 5vh;
+    }
+    input::placeholder {
+      color: whitesmoke;
+    }
+  }
+  div {
+    padding: 10px;
+  }
+  .subscribe-ad {
+    width: 100%;
+    padding: 10px;
+
+    .inner-container {
+      background: $gray;
+      border-radius: 15px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      div {
+        button {
+          background: $blue;
+          max-height: 5vh;
+          padding: 10px;
+          width: 150px;
+          border-radius: 25px;
+          font-size: 1.2em;
+          color: white;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  .trends {
+    background: $gray;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .trend-container {
+      box-sizing: border-box;
+      margin-top: 10px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      div {
+        height: 3vh;
+        width: 100%; /* Ensure children have the same width as parent */
+      }
+
+
+      p {
+        color: gray;
+        font-size: 1em;
+      }
+    }
+    .trend-container:hover {
+      background: rgba(5, 2, 2, 0.2);
+    }
+  }
+
+}

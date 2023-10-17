@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Registration.css';
 import {
     Button,
-    Flex,
     Form,
     Input,
     Select
@@ -10,14 +9,8 @@ import {
 import {Link as RouterLink} from "react-router-dom";
 import {Space, Typography} from 'antd';
 
-const {Text, Link, Title} = Typography;
+const {Text, Title} = Typography;
 const {Option} = Select;
-
-interface DataNodeType {
-    value: string;
-    label: string;
-    children?: DataNodeType[];
-}
 
 const formItemLayout = {
     labelCol: {
@@ -27,19 +20,6 @@ const formItemLayout = {
     wrapperCol: {
         xs: {span: 24},
         sm: {span: 16},
-    },
-};
-
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 0,
-        },
-        sm: {
-            span: 16,
-            offset: 8,
-        },
     },
 };
 
@@ -54,9 +34,6 @@ const Registration: React.FC = () => {
     );
 
     const [form] = Form.useForm();
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values);
-    };
     function UserOutlined(props: { className: string }) {
         return null;
     }

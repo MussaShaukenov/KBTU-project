@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import "./Navbar.scss"
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
@@ -52,15 +53,24 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <div style={{width: 256}}>
-            <Button type="primary" onClick={toggleCollapsed} style={{marginBottom: 16}}>
-                {collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
+        <div className="full-height-navbar">
+            <Button type="primary" onClick={toggleCollapsed} style={{
+                marginBottom: 16,
+                background: "#1c9bef",
+                height: "5vh",
+            }}>
+                {collapsed ? <RocketOutlined/> : <RocketOutlined/>}
             </Button>
             <Menu
                 defaultSelectedKeys={['1']}
                 defaultOpenKeys={['sub1']}
+                style={{
+                    fontSize: 20,
+                    backgroundColor: "black",
+                    color: "white",
+                }}
+
                 mode="inline"
-                theme="dark"
                 inlineCollapsed={collapsed}
                 items={items}
             />

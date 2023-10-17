@@ -7,16 +7,6 @@ const onFinish = (values: any) => {
     console.log('Success:', values);
 };
 
-const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-};
-
-type FieldType = {
-    username?: string;
-    password?: string;
-    remember?: boolean;
-};
-
 function LockOutlined(props: { className: string }) {
     return null;
 }

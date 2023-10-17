@@ -4,7 +4,7 @@ import './App.css';
 import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
 import MainPage from "./components/MainPage/MainPage";
-import Navbar from "./components/Navbar/Navbar";
+// import Navbar from "./components/Navbar/Navbar";
 function App() {
     return (
         <div className="App">
@@ -12,7 +12,7 @@ function App() {
                 <Routes>
                     <Route path="/register" element={<Registration/>}/>
                     <Route path="/login" element={<Login/>}/>
-                    <Route path="/" element={<Navbar/>}/>
+                    <Route path="/" element={<MainPage/>}/>
                 </Routes>
             </Router>
         </div>
