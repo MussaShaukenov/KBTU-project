@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import Bookmark from "../Bookmarks/Bookmark";
+import Community from "../Communities/Community";
 import { Layout, Space } from 'antd';
 import "./MainPage.scss"
 const {
@@ -39,7 +40,7 @@ const MainPage: React.FC = () => (
             <Sider><Navbar /></Sider>
             <Layout>
                 {/*<Header style={headerStyle}>Header</Header>*/}
-                <Content style={contentStyle}><Bookmark /></Content>
+                <Content style={contentStyle}><Community /></Content>
                 {/*<Footer style={footerStyle}>Footer</Footer>*/}
             </Layout>
             <Sidebar/>
