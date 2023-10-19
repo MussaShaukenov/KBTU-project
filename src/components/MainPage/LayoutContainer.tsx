@@ -10,6 +10,8 @@ const contentStyle = {
     minHeight: 120,
     color: '#fff',
     backgroundColor: 'black',
+    width: '100%',
+    marginLeft: "5.5em",
 };
 
 interface LayoutContainerProps {
@@ -17,7 +19,7 @@ interface LayoutContainerProps {
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = ({ children }) => (
-    <Space direction="vertical" style={{ width: '100%' }} size={[12, 48]}>
+    <Space direction="vertical" style={{ width: '100%' }}>
         <Layout>
             <Sider>
                 <Navbar />

@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route, Link, Routes} from "react-router-dom";
 import './App.scss';
 import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
-import Trends from "./components/Trends/Trends";
 import InitialPage from "./components/InitialPage/InitialPage";
 import GithubLogin from "./components/GithubLogin/GithubLogin";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
@@ -14,7 +13,7 @@ import Profile from "./components/Profile/Profile";
 import Bookmark from "./components/Bookmarks/Bookmark";
 import Community from "./components/Communities/Community";
 import Tweet from "./components/Tweet/Tweet";
-
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
     return (
@@ -32,6 +31,7 @@ function App() {
                     <Route path="/communities" element={<Community/>}/>
                     <Route path="/tweet" element={<Tweet/>}/>
                     <Route path="*" element={<PageNotFound/>}/>
+                    <Route path="home" element={<HomePage/>}/>
                 </Routes>
             </Router>
         </div>

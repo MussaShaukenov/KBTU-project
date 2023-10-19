@@ -70,7 +70,6 @@ const Navbar: React.FC = () => {
                 {collapsed ? <RocketOutlined /> : <RocketOutlined />}
             </Button>
             <Menu
-                defaultSelectedKeys={['home']} // Set the default selected key to 'home'
                 defaultOpenKeys={['sub1']}
                 style={{
                     fontSize: 20,

@@ -1,0 +1,93 @@
+$blue: #1DA1F2;
+
+
+h2 {
+  text-align: left;
+  font-size: 44px;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  z-index: -1;
+  border: 1px solid #999;
+
+  div {
+    padding: 5px;
+  }
+
+  .post-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+
+    img {
+      max-height: 3em;
+      max-width: 3em;
+    }
+
+    .post-author-info {
+      display: flex;
+      flex-direction: column;
+      vertical-align: center;
+      text-align: left;
+
+      #author-name {
+        font-weight: 700;
+        color: white !important;
+      }
+
+      span {
+        color: #999;
+      }
+    }
+
+  }
+
+  div:nth-child(2) {
+    img {
+      min-height: 20em;
+      max-height: 30em;
+      object-fit: cover; /* or "contain" depending on your preference */
+      max-width: 25em;
+
+      border-radius: 25px;
+    }
+  }
+
+  .media-stats {
+    display: flex;
+    gap: 7em;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+
+
+    #comment-icon {
+      &:hover {
+        cursor: pointer;
+        color: $blue;
+      }
+    }
+
+    #share-icon {
+      &:hover {
+        cursor: pointer;
+        color: limegreen;
+      }
+    }
+
+    #like-icon {
+      &:hover {
+        cursor: pointer;
+        color: deeppink;
+      }
+    }
+  }
+}
