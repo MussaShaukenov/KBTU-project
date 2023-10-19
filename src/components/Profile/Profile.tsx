@@ -3,7 +3,7 @@ import "./Profile.scss"
 import { ArrowLeftOutlined, CalendarOutlined} from '@ant-design/icons';
 import {Tabs} from "antd";
 import type { TabsProps } from 'antd';
-
+import LayoutContainer from "../MainPage/LayoutContainer";
 const onChange = (key: string) => {
     console.log(key);
 };
@@ -37,29 +37,30 @@ const items: TabsProps['items'] = [
 ];
 
 const Profile: React.FC = () => (
-    <div className="profile-container">
-        <div className="profile-return">
-            <div><ArrowLeftOutlined /></div>
-            <div className="profile-header">
-                <div><h2>Mussa Shaukenov (themussa)</h2></div>
-                <div><p>0 posts</p></div>
+    <LayoutContainer>
+        <div className="profile-container">
+            <div className="profile-return">
+                <div><ArrowLeftOutlined /></div>
+                <div className="profile-header">
+                    <div><h2>Mussa Shaukenov (themussa)</h2></div>
+                    <div><p>0 posts</p></div>
+                </div>
+            </div>
+            <div className="profile-main">
+                <div className="profile-avatar"></div>
+                <div><h3>Mussa Shaukenov (themussa)</h3></div>
+                <div>@MThemussa</div>
+                <div><CalendarOutlined /> Joined March 2023</div>
+                <div className="profile-follower-info">
+                    <div><span>345</span> Following</div>
+                    <div><span>12042</span> Followers</div>
+                </div>
+                <div className="profile-tabs">
+                    <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+                </div>
             </div>
         </div>
-        <div className="profile-main">
-            {/*<div className="profile-background"></div>*/}
-            <div className="profile-avatar"></div>
-            <div><h3>Mussa Shaukenov (themussa)</h3></div>
-            <div>@MThemussa</div>
-            <div><CalendarOutlined /> Joined March 2023</div>
-            <div className="profile-follower-info">
-                <div><span>345</span> Following</div>
-                <div><span>12042</span> Followers</div>
-            </div>
-            <div className="profile-tabs">
-                <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
-            </div>
-        </div>
-    </div>
+    </LayoutContainer>
 );
 
 export default Profile;

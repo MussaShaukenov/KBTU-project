@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./Notifications.scss";
+import LayoutContainer from "../MainPage/LayoutContainer";
 
 const Notifications: React.FC = () => {
     const [activeTab, setActiveTab] = useState("All");
@@ -9,7 +10,7 @@ const Notifications: React.FC = () => {
     };
 
     return (
-        <>
+        <LayoutContainer>
             <h2>Notifications</h2>
             <div className="notification-container">
                 <div
@@ -51,7 +52,7 @@ const Notifications: React.FC = () => {
                 <div><img src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202307/x_twitter-sixteen_nine.jpg" alt=""/></div>
                 <div><p>There was a login to your account @MThemussa from a new device on 10 окт. 2023 г.. Review it now.</p></div>
             </div>
-        </>
+        </LayoutContainer>
     );
 };
 

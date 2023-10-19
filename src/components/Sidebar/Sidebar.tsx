@@ -1,16 +1,12 @@
-import React, {useState} from 'react';
-import {Button, Input, Space} from 'antd';
-import {MoreOutlined} from '@ant-design/icons';
+import React from 'react';
+import {Input} from 'antd';
 import {SearchProps} from "antd/lib/input";
 import "./Sidebar.scss"
-import {SizeType} from "antd/lib/config-provider/SizeContext";
 
 const {Search} = Input;
 const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
 
 const Sidebar: React.FC = () => {
-    const [size, setSize] = useState<SizeType>('large');
-
     return (
         <div className="full-height-sidebar">
             <div className="left-sidebar-container"></div>
