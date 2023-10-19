@@ -1,146 +1,233 @@
-import React from 'react';
-import './Registration.css';
+import React from "react";
 import {
-    Button,
-    Form,
-    Input,
-    Select
-} from 'antd';
-import {Link as RouterLink} from "react-router-dom";
-import {Space, Typography} from 'antd';
+    ModalForm,
+    ProCard,
+    ProForm,
+    ProFormDatePicker,
+    ProFormSelect,
+    ProFormText,
+    ProFormTextArea,
+    StepsForm,
+} from '@ant-design/pro-components';
+import {Button, message} from 'antd';
+import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const {Text, Title} = Typography;
-const {Option} = Select;
 
-const formItemLayout = {
-    labelCol: {
-        xs: {span: 24},
-        sm: {span: 8},
-    },
-    wrapperCol: {
-        xs: {span: 24},
-        sm: {span: 16},
-    },
+const waitTime = (time: number = 100) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(true);
+        }, time);
+    });
 };
 
-const Registration: React.FC = () => {
-    const prefixSelector = (
-        <Form.Item name="prefix" noStyle>
-            <Select style={{width: 80}}>
-                <Option value="7">+7</Option>
-                <Option value="123">+123</Option>
-            </Select>
-        </Form.Item>
-    );
+const Register: React.FC = () => {
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
-    const [form] = Form.useForm();
-    function UserOutlined(props: { className: string }) {
-        return null;
+    function validateAge(_: any, value: string | number | Date) {
+        if (!value) {
+            return Promise.resolve(); // No date selected; validation passed
+        }
+        // Calculate the age based on the selected birthdate
+        const birthDate = new Date(value);
+        const currentDate = new Date();
+        const age = currentDate.getFullYear() - birthDate.getFullYear();
+
+        if (age >= 14) {
+            return Promise.resolve(); // User is 14 or older; validation passed
+        } else {
+            return Promise.reject('This platform is only for 14+');
+        }
     }
-    function LockOutlined(props: { className: string }) {
-        return null;
+
+    function validateName(_: any, value: string) {
+        if (!value) {
+            return Promise.reject('Name is required');
+        }
+        const formattedValue = value
+            .split(' ')
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+
+        if (formattedValue.length > 50) {
+            return Promise.reject('Name cannot exceed 50 characters');
+        }
+        return Promise.resolve(formattedValue);
     }
 
     return (
-        <div className="register-container">
-            <Form
-                {...formItemLayout}
-                form={form}
-                name="register"
-                scrollToFirstError
-                initialValues={{prefix: '123' }}
+        <>
+            <ModalForm
+                submitter={{
+                    searchConfig: {
+                        submitText: 'Submit',
+                        resetText: 'Close',
+                    }
+                }}
+                trigger={<div>
+                    <button className="create-account">Create account</button>
+                </div>}
+                onFinish={async (values: any) => {
+                    await waitTime(1000);
+                    console.log(values);
+                    message.success('Submitted successfully');
+
+                    // After form submission, navigate to the "/home" page
+                    navigate('/home');
+                }}
             >
-                <Form.Item>
-                    <Title level={2} style={{width: "100%"}}>Create your Account</Title>
-                </Form.Item>
-                <Form.Item
-                    name="email"
-                    rules={[{required: true, message: 'Please input your email!'}]}
-                >
-                    <Input autoFocus prefix={<UserOutlined className="site-form-item-icon"/>} placeholder="Email..."/>
-                </Form.Item>
-
-                <Form.Item
-                    name="password"
-                    rules={[{required: true, message: 'Please input your Password!'}]}
-                >
-                    <Input
-                        prefix={<LockOutlined className="site-form-item-icon"/>}
-                        type="password"
-                        placeholder="Password"
-                    />
-                </Form.Item>
-
-                <Form.Item
-                    name="username"
-                    rules={[{required: true, message: 'Please input your username!', whitespace: true}]}
-                >
-                    <Input prefix={<UserOutlined className="site-form-item-icon"/>} placeholder="Username"/>
-                </Form.Item>
-
-                <Form.Item
-                    name="phone"
-                >
-                    <Input placeholder="7017010011" addonBefore={prefixSelector} style={{width: '100%'}}/>
-                </Form.Item>
-
-                <Form.Item
-                    name="gender"
-                >
-                    <Select placeholder="Select your gender">
-                        <Option value="male">Male</Option>
-                        <Option value="female">Female</Option>
-                        <Option value="other">Other</Option>
-                    </Select>
-                </Form.Item>
-
-                <Form.Item
-                    name="agreement"
-                    valuePropName="checked"
-                >
-                    <Space direction="vertical" style={{textAlign: "center"}}>
-                        <Text type={"secondary"} style={{fontSize: ".8em"}}>
-                            By signing up, you agree to the
-                            <RouterLink target="blank" to="https://twitter.com/en/tos#new">
-                                <span style={{color: "#1c9bef"}}> Terms of Service </span>
-                            </RouterLink>
-                            and
-                            <RouterLink target="blank" to="https://twitter.com/en/privacy">
-                                <span style={{color: "#1c9bef"}}> Privacy Policy </span>
-                            </RouterLink>
-                            including
-                            <RouterLink target="blank"
-                                        to="https://help.twitter.com/en/rules-and-policies/x-cookies">
-                                <span style={{color: "#1c9bef"}}> Cookie Use. </span>
-                            </RouterLink>
-                            Twitter may use your contact information,
-                            including your email address and phone number for purposes outlined in our Privacy
-                            Policy,
-                            like keeping your account secure and personalising our services, including ads.
-                            <RouterLink target="blank" to="https://twitter.com/en/privacy">
-                                <span style={{color: "#1c9bef"}}> Learn more. </span>
-                            </RouterLink>
-                        </Text>
-                    </Space>
-                </Form.Item>
-
-                <Form.Item>
-                    <Button style={{width: "100%", background: "#1c9bef"}} type="primary" htmlType="submit">
-                        Register
-                    </Button>
-                </Form.Item>
-
-                <Form.Item>
-                    <span style={{color: "gray"}}>Already have an account?</span>
-                    <Button style={{marginTop: 10, background: "gray", color: "whitesmoke"}} type="primary" className="login-form-button">
-                        <RouterLink to="/login">
-                            Login
-                        </RouterLink>
-                    </Button>
-                </Form.Item>
-            </Form>
-        </div>
+                <ProCard>
+                    <StepsForm
+                        onFinish={async () => {
+                            setLoading(true);
+                            await waitTime(1000);
+                            message.success('Success');
+                            setLoading(false);
+                        }}
+                        submitter={{
+                            render: ({form, onSubmit, step, onPre}) => {
+                                return [
+                                    <Button
+                                        key="reset"
+                                        style={{backgroundColor: "red", color: "white"}}
+                                        onClick={() => {
+                                            form?.resetFields();
+                                        }}
+                                    >
+                                        Reset
+                                    </Button>,
+                                    step > 0 && (
+                                        <Button
+                                            key="pre"
+                                            onClick={() => {
+                                                onPre?.();
+                                            }}
+                                        >
+                                            Go back
+                                        </Button>
+                                    ),
+                                    <Button
+                                        key="next"
+                                        loading={loading}
+                                        type="primary"
+                                        style={{backgroundColor: "#1DA1F2", color: "white"}}
+                                        onClick={() => {
+                                            onSubmit?.();
+                                        }}
+                                    >
+                                        Next
+                                    </Button>,
+                                ];
+                            },
+                        }}
+                        formProps={{
+                            validateMessages: {
+                                required: 'Required',
+                            },
+                        }}
+                    >
+                        <StepsForm.StepForm
+                            name="base"
+                            title="Step"
+                            onFinish={async () => {
+                                setLoading(true);
+                                await waitTime(2000);
+                                setLoading(false);
+                                return true;
+                            }}
+                        >
+                            <h1>Create your account</h1>
+                            <ProFormText
+                                name="name"
+                                label="Name"
+                                width="md"
+                                tooltip="What's your name?"
+                                placeholder="Name"
+                                rules={[
+                                    {validator: validateName},
+                                ]}
+                            />
+                            <ProFormText
+                                name="phone"
+                                label="Phone"
+                                width="md"
+                                placeholder="Phone"
+                                rules={[
+                                    {required: true, message: 'Phone number is required'},
+                                    {max: 50, message: 'Phone number cannot exceed 50 characters'},
+                                    {
+                                        validator: (_, value) => {
+                                            if (!value || /^[\d+]+$/.test(value)) {
+                                                // The input is either empty or contains only digits and/or '+'
+                                                return Promise.resolve();
+                                            } else {
+                                                return Promise.reject('Enter a valid phone number');
+                                            }
+                                        },
+                                    },
+                                ]}
+                            />
+                            <ProFormDatePicker
+                                name="birthday"
+                                label="Birthday"
+                                placeholder="Birthday"
+                                rules={[
+                                    {required: true, message: 'Birthday is required'},
+                                    {validator: validateAge},
+                                ]}
+                            />
+                        </StepsForm.StepForm>
+                        <StepsForm.StepForm name="checkbox" title="Step">
+                            <ProFormSelect
+                                name="gender"
+                                label="Gender"
+                                width="lg"
+                                rules={[{required: true}]}
+                                options={[
+                                    {value: 'male', label: 'Male'},
+                                    {value: 'female', label: 'Female'},
+                                    {value: 'other', label: 'Other'},
+                                ]}/>
+                            <ProForm.Group>
+                                <ProFormText
+                                    name="country"
+                                    label="Country"
+                                    placeholder="Country"
+                                />
+                            </ProForm.Group>
+                            <ProFormTextArea
+                                name="bio"
+                                label="Bio"
+                                width="lg"
+                                placeholder="Your bio"/>
+                        </StepsForm.StepForm>
+                        <StepsForm.StepForm name="time" title="Step">
+                            <ProFormText.Password
+                                name="password"
+                                label="Password"
+                                width="md"
+                                placeholder="Password"
+                                rules={[
+                                    {required: true, message: 'Password is required'},
+                                ]}
+                            />
+                            <ProFormText.Password
+                                name="password-confirm"
+                                label="Password confirmation"
+                                width="md"
+                                placeholder="Password confirmation"
+                                rules={[
+                                    {required: true, message: 'Password is required'},
+                                ]}
+                            />
+                        </StepsForm.StepForm>
+                    </StepsForm>
+                </ProCard>
+            </ModalForm>
+        </>
     );
-}
+};
 
-export default Registration;
+export default Register;

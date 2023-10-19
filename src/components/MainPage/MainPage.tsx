@@ -3,14 +3,18 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import Bookmark from "../Bookmarks/Bookmark";
 import Community from "../Communities/Community";
-import { Layout, Space } from 'antd';
+import Profile from "../Profile/Profile";
+import Register from "../Registration/Registration";
+import Notifications from "../Notifications/Notifications";
+import {Layout, Space} from 'antd';
 import "./MainPage.scss"
+
 const {
     Header,
-        Footer,
-        Sider,
-        Content
-    } = Layout;
+    Footer,
+    Sider,
+    Content
+} = Layout;
 
 const headerStyle: React.CSSProperties = {
     textAlign: 'center',
@@ -22,9 +26,8 @@ const headerStyle: React.CSSProperties = {
 };
 
 const contentStyle: React.CSSProperties = {
-    textAlign: 'center',
+    paddingTop: 25,
     minHeight: 120,
-    lineHeight: '120px',
     color: '#fff',
     backgroundColor: 'black',
 };
@@ -35,17 +38,15 @@ const footerStyle: React.CSSProperties = {
 };
 
 const MainPage: React.FC = () => (
-    <Space direction="vertical" style={{width: '100%'}} size={[12, 48]}>
-        <Layout>
-            <Sider><Navbar /></Sider>
+        <Space direction="vertical" style={{width: '100%'}} size={[12, 48]}>
             <Layout>
-                {/*<Header style={headerStyle}>Header</Header>*/}
-                <Content style={contentStyle}><Community /></Content>
-                {/*<Footer style={footerStyle}>Footer</Footer>*/}
+                <Sider><Navbar/></Sider>
+                <Layout>
+                    <Content style={contentStyle}><Profile/></Content>
+                </Layout>
+                <Sidebar/>
             </Layout>
-            <Sidebar/>
-        </Layout>
-    </Space>
+        </Space>
 );
 
 export default MainPage;

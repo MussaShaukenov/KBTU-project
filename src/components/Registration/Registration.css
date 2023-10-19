@@ -28,7 +28,6 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /*padding: 25px;*/
 }
 .terms_of_service {
     color: rgb(128, 128, 128);

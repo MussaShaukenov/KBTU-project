@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Input, Space} from 'antd';
-import { MoreOutlined } from '@ant-design/icons';
+import {MoreOutlined} from '@ant-design/icons';
 import {SearchProps} from "antd/lib/input";
 import "./Sidebar.scss"
 import {SizeType} from "antd/lib/config-provider/SizeContext";
@@ -13,9 +13,10 @@ const Sidebar: React.FC = () => {
 
     return (
         <div className="full-height-sidebar">
-            <Search placeholder="Search" onSearch={onSearch} enterButton/>
-            <div>
-                <Space direction="vertical" size={2}>
+            <div className="left-sidebar-container"></div>
+            <div className="centre-sidebar-container">
+                <div><Search placeholder="Search" onSearch={onSearch} enterButton/></div>
+                <div>
                     <div className="subscribe-ad">
                         <div className="inner-container">
                             <div><h2>Subscribe to Premium</h2></div>
@@ -49,8 +50,9 @@ const Sidebar: React.FC = () => {
                             <div><p>53.9 K posts</p></div>
                         </div>
                     </div>
-                </Space>
+                </div>
             </div>
+            <div className="right-sidebar-container"></div>
         </div>
     );
 };

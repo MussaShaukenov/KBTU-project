@@ -1,0 +1,84 @@
+.profile-container {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  width: 100%;
+
+  svg {
+    width: 2em;
+    fill: white;
+    height: 20px;
+  }
+
+  .profile-return {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+
+  .profile-main {
+    margin-top: 2em;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    align-items: start;
+    justify-content: center;
+
+    .profile-background {
+      background-color: gray;
+      width: inherit;
+      height: 15em;
+    }
+
+    .profile-avatar {
+      background-image: url('https://i.stack.imgur.com/Dj7eP.jpg');
+      width: 9.375rem;
+      height: 9.375rem;
+      background-size: cover;
+      background-position: top center;
+      border-radius: 50%;
+    }
+
+    div {
+      color: gray;
+      margin: 5px 0;
+      font-weight: 500;
+
+      h3 {
+        color: white !important;
+        font-weight: 900;
+      }
+
+      span {
+        color: white;
+      }
+    }
+
+    .profile-follower-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      div:nth-child(2) {
+        margin-left: 2em;
+      }
+    }
+
+    .profile-tabs {
+      box-sizing: border-box;
+    }
+  }
+}
