@@ -1,97 +1,42 @@
 $gray: #16181C;
 $blue: #1c9bef;
+$width: 25em;
 
 .full-height-sidebar {
-  color: white;
   display: flex;
+  width: 35em;
   flex-direction: row;
   justify-content: center;
   padding-top: 25px;
   border-left: 2px solid gray;
   background: black;
+
+  input {
+    background: $gray;
+    border: 1px solid $gray;
+    color: white;
+
+    &::placeholder {
+      color: white;
+    }
+  }
+
+  button {
+    background: $gray;
+    border: 1px solid $gray;
+  }
+
   .left-sidebar-container {
     background: black;
+
   }
+
   .right-sidebar-container {
     background: black;
   }
+
   .centre-sidebar-container {
     background: black;
 
-    div {
-      width: 100%;
-    }
   }
-
-  span {
-    width: inherit;
-    height: 1.5em;
-    input {
-      background: $gray;
-      border: 1px solid $blue;
-      color: $blue;
-      border-radius: 25px;
-      max-height: 5vh;
-    }
-    input::placeholder {
-      color: whitesmoke;
-    }
-  }
-  div {
-    padding: 10px;
-  }
-  .subscribe-ad {
-    padding: 0;
-    margin: 0;
-
-    .inner-container {
-      background: $gray;
-      border-radius: 15px;
-      display: inline-flex;
-      flex-direction: column;
-
-      div {
-        button {
-          background: $blue;
-          max-height: 5vh;
-          width: 150px;
-          border-radius: 25px;
-          font-size: 1.2em;
-          color: white;
-          font-weight: 700;
-        }
-      }
-    }
-  }
-  .trends {
-    margin-top: 1em;
-    background: $gray;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    .trend-container {
-      box-sizing: border-box;
-      margin-top: 10px;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-start;
-
-      div {
-        height: 3vh;
-        width: 100%; /* Ensure children have the same width as parent */
-      }
-
-
-      p {
-        color: gray;
-        font-size: 1em;
-      }
-    }
-    .trend-container:hover {
-      background: rgba(5, 2, 2, 0.2);
-    }
-  }
-
 }

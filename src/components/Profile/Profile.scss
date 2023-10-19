@@ -1,84 +1,298 @@
+
 .profile-container {
-  display: flex;
-  padding: 0;
-  margin: 0;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: start;
-  width: 100%;
+  margin-left: 124px;
 
-  svg {
-    width: 2em;
-    fill: white;
-    height: 20px;
+
+  #fixedarrow {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    border: 1px solid rgb(155, 157, 160);
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
   }
 
-  .profile-return {
+  a,
+  li {
+    text-decoration: none;
+    list-style: none;
+    color: white;
+  }
+
+  li:hover {
+    color: rgb(36, 86, 136);
+    background-color: rgb(36, 86, 136);
+    opacity: 0.9;
+    border-radius: 30px;
+    width: 200px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  #twittericon {
+    color: white;
+    font-size: 25px;
+    margin-left: 75px;
+  }
+
+  #twittericon:hover {
+    color: royalblue;
+  }
+
+  #icons {
+    margin-right: 10px;
+    font-size: 25px;
+  }
+
+  .leftverticalmenu {
+    height: 100vh;
+    width: 300px;
+    text-align: left;
+    line-height: 60px;
+    font-size: 20px;
+    border-right: 1px solid rgb(155, 157, 160);
+    position: fixed;
+
+  }
+
+  ul {
+    margin: auto;
+    width: 50%;
+    margin-top: -10px;
+
+  }
+
+  .profileimage {
+    border-radius: 50%;
+    border: 2px solid rgb(43, 43, 223);
+    width: 25px;
+    margin-right: 10px;
+    margin-bottom: -5px;
+  }
+
+  figure {
+    border-radius: 50px;
+    height: 55px;
+    font-weight: bold;
+    background-color: rgb(29, 161, 242);
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    font-size: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  figure:hover {
+    opacity: 0.9;
+  }
+
+  /* MIDDLE AND RIGHT CONTAINERS */
+
+  .flexcontainer {
+    position: absolute;
+    left: 300px;
+  }
+
+  .middlecontainer {
+    width: 700px;
+    border-right: 1px solid rgb(155, 157, 160);
+    height: 100%;
+
+  }
+
+  .headsec {
     display: flex;
-    flex-direction: row;
+    margin-top: 10px;
+
+  }
+
+  #fa-arrow-left {
+    color: blue;
+    filter: brightness(70%);
+    font-size: 20px;
+    margin: 10px 20px 0 20px;
+    cursor: pointer;
+  }
+
+  span {
+    filter: brightness(50%)
+  }
+
+  .headerprofileimage {
+    margin-top: 10px;
+    position: relative;
+
+
+  }
+
+  #headerimage {
+    width: 700px;
+    height: 200px;
+  }
+
+  #profilepic {
+    border-radius: 50%;
+    width: 150px;
+    height: 130px;
+    position: absolute;
+    top: 130px;
+    left: 20px;
+    border: 4px solid rgb(21, 32, 43);
+  }
+
+  .editprofile {
+    margin-top: 5px;
+    float: right;
+    border: 1px solid rgb(155, 157, 160);
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .bio {
+    margin-top: 55px;
+    margin-left: 20px;
+    line-height: 40px;
+    font-size: 15px;
+  }
+
+  .handle {
+    line-height: 19px;
+    margin-bottom: 10px;
+  }
+
+  .followers {
+    margin-right: 15px;
+  }
+
+  .nawa {
+    display: flex;
+  }
+
+  .heading {
+    display: flex;
     justify-content: space-around;
-    align-items: center;
+    border-bottom: 1px solid white;
+    margin-top: 10px;
+    font-weight: bold;
 
-    .profile-header {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-    }
   }
 
-  .profile-main {
-    margin-top: 2em;
-    box-sizing: border-box;
-    width: 100%;
+  .heading p {
+    display: block;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .heading p:hover {
+    background: royalblue;
+  }
+
+  .avi {
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .mytweets {
     display: flex;
-    flex-direction: column;
-    padding-left: 20px;
-    align-items: start;
-    justify-content: center;
+    margin: 15px 0 15px 0;
+    margin-bottom: 800px;
+  }
 
-    .profile-background {
-      background-color: gray;
-      width: inherit;
-      height: 15em;
-    }
+  .tweetcontent {
+    margin-top: 5px;
+  }
 
-    .profile-avatar {
-      background-image: url('https://i.stack.imgur.com/Dj7eP.jpg');
-      width: 9.375rem;
-      height: 9.375rem;
-      background-size: cover;
-      background-position: top center;
-      border-radius: 50%;
-    }
+  .retweeticons {
+    margin-top: 5px;
+    margin-left: -10px;
+    display: inline-flex;
+    justify-content: space-evenly;
+  }
 
-    div {
-      color: gray;
-      margin: 5px 0;
-      font-weight: 500;
 
-      h3 {
-        color: white !important;
-        font-weight: 900;
-      }
+  /* RIGHT VERTICAL CONTAINER */
 
-      span {
-        color: white;
-      }
-    }
+  .flexcontainer {
+    display: flex;
+  }
 
-    .profile-follower-info {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+  .searchbar {
+    display: inline-flex;
+    margin: 10px 0 0 25px;
+    border: 1px solid rgb(155, 157, 160);
+    padding: 13px;
+    border-radius: 20px;
+    width: 300px;
+  }
 
-      div:nth-child(2) {
-        margin-left: 2em;
-      }
-    }
+  #searchbox {
+    border: none;
+    background-color: transparent;
+    color: rgb(155, 157, 160);
+  }
 
-    .profile-tabs {
-      box-sizing: border-box;
-    }
+  .searchicon {
+    color: royalblue;
+    margin-right: 15px;
+  }
+
+  .twittermedia {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid rgb(155, 157, 160);
+    border-radius: 20px;
+    margin: 10px 0 0 25px;
+    width: 300px;
+  }
+
+  .twittermedia img {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+  }
+
+  .nigeriatrends {
+    margin: 30px 0 0 25px;
+    width: 300px;
+    border: 1px solid rgb(155, 157, 160);
+    border-radius: 10px;
+    padding: 10px 0;
+  }
+
+  #fa-cog {
+    color: royalblue;
+    margin-top: 5px;
+    cursor: pointer;
+    font-size: 25px;
+  }
+
+  .headertrends {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(155, 157, 160);
+    padding: 10px;
+  }
+
+  .trending {
+    filter: brightness(50%)
+  }
+
+  .trenditem {
+    border-bottom: 1px solid rgb(155, 157, 160);
+    padding: 10px;
+    line-height: 22px;
+  }
+
+  .hashtag {
+    font-weight: bolder;
   }
 }

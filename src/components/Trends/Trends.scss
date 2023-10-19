@@ -1,0 +1,32 @@
+$gray: #16181C;
+$blue: #1c9bef;
+
+.trends {
+  border-radius: 25px;
+  padding-left: 10px;
+  width: 25em;
+  background-color: $gray;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+
+  h3 {
+    font-weight: 900;
+  }
+
+  .trend-container {
+    width: 25em;
+    box-sizing: border-box;
+
+    h4 {
+      font-weight: 900;
+    }
+
+    &:hover {
+      background-color: #1b1e21;;
+    }
+  }
+}

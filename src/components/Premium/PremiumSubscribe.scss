@@ -1,0 +1,35 @@
+$gray: #16181C;
+
+
+.subscribe-ad {
+  border-radius: 25px;
+  padding: 10px;
+  background: $gray;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+
+  div {
+    color: white;
+
+    h3 {
+      font-weight: 900;
+    }
+    h4 {
+      font-weight: 700;
+    }
+    button {
+      width: 10em;
+      border: 1px solid #1C9BEFFF;
+      border-radius: 20px;
+      padding: 10px 20px;
+      background: #1C9BEFFF;
+      font-size: 14px;
+      font-weight: 900;
+      color: white;
+    }
+  }
+}

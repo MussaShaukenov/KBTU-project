@@ -2,6 +2,8 @@ import React from 'react';
 import {Input} from 'antd';
 import {SearchProps} from "antd/lib/input";
 import "./Sidebar.scss"
+import Trends from "../Trends/Trends";
+import PremiumSubscribe from "../Premium/PremiumSubscribe";
 
 const {Search} = Input;
 const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
@@ -9,44 +11,17 @@ const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?
 const Sidebar: React.FC = () => {
     return (
         <div className="full-height-sidebar">
-            <div className="left-sidebar-container"></div>
             <div className="centre-sidebar-container">
                 <div><Search placeholder="Search" onSearch={onSearch} enterButton/></div>
+                <br/> <br/>
                 <div>
-                    <div className="subscribe-ad">
-                        <div className="inner-container">
-                            <div><h2>Subscribe to Premium</h2></div>
-                            <div><h4>Subscribe to unlock new features and if <br/> eligible, receive a share of ads
-                                revenue.</h4></div>
-                            <div>
-                                <button type="submit">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="trends">
-                        <div><h2>Trends for you</h2></div>
-                        <div className="trend-container">
-                            <div><p>Trending</p></div>
-                            <div><h3>The GOAT</h3></div>
-                            <div><p>29.9 K posts</p></div>
-                        </div>
-                        <div className="trend-container">
-                            <div><p>Trending </p></div>
-                            <div><h3>Elon Musk</h3></div>
-                            <div><p>12.3 K posts</p></div>
-                        </div>
-                        <div className="trend-container">
-                            <div><p>Trending</p></div>
-                            <div><h3>Google</h3></div>
-                            <div><p>3.9 K posts</p></div>
-                        </div>
-                        <div className="trend-container">
-                            <div><p>Trending</p></div>
-                            <div><h3>BBC</h3></div>
-                            <div><p>53.9 K posts</p></div>
-                        </div>
-                    </div>
+                  <PremiumSubscribe/>
                 </div>
+                <br/> <br/>
+                <div>
+                    <Trends/>
+                </div>
+
             </div>
             <div className="right-sidebar-container"></div>
         </div>

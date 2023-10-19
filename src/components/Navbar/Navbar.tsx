@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
                 onClick={toggleCollapsed}
                 style={{
                     marginBottom: 16,
-                    background: '#1c9bef',
+                    background: 'black',
                     height: '5vh',
                 }}
             >

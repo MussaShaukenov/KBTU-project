@@ -1,9 +1,9 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link, Routes} from "react-router-dom";
-import './App.css';
+import './App.scss';
 import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
-import LayoutContainer from "./components/MainPage/LayoutContainer";
+import Trends from "./components/Trends/Trends";
 import InitialPage from "./components/InitialPage/InitialPage";
 import GithubLogin from "./components/GithubLogin/GithubLogin";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
@@ -13,6 +13,7 @@ import Notifications from "./components/Notifications/Notifications";
 import Profile from "./components/Profile/Profile";
 import Bookmark from "./components/Bookmarks/Bookmark";
 import Community from "./components/Communities/Community";
+import Tweet from "./components/Tweet/Tweet";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/bookmarks" element={<Bookmark/>}/>
                     <Route path="/communities" element={<Community/>}/>
+                    <Route path="/tweet" element={<Tweet/>}/>
                     <Route path="*" element={<PageNotFound/>}/>
                 </Routes>
             </Router>
