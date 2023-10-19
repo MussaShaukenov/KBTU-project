@@ -1,3 +1,6 @@
+# Master Students: Mussa Shaukenov, Asfandiyar Marat, Akan Otebay and Alisher Orazbay
+# Project: Twitter Clone
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
