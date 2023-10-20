@@ -12,7 +12,7 @@ import {
 import {Button, message} from 'antd';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import './Registration.scss';
 
 const waitTime = (time: number = 100) => {
     return new Promise((resolve) => {
@@ -91,7 +91,7 @@ const Register: React.FC = () => {
                                 return [
                                     <Button
                                         key="reset"
-                                        style={{backgroundColor: "red", color: "white"}}
+                                        style={{backgroundColor: "red"}}
                                         onClick={() => {
                                             form?.resetFields();
                                         }}
@@ -112,7 +112,7 @@ const Register: React.FC = () => {
                                         key="next"
                                         loading={loading}
                                         type="primary"
-                                        style={{backgroundColor: "#1DA1F2", color: "white"}}
+                                        style={{backgroundColor: "#1DA1F2", color: "#000"}}
                                         onClick={() => {
                                             onSubmit?.();
                                         }}

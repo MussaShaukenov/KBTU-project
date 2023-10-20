@@ -68,8 +68,8 @@ h2 {
     align-items: center;
     text-align: center;
 
-
     #comment-icon {
+      transform: scale(1.2);
       &:hover {
         cursor: pointer;
         color: $blue;
@@ -77,6 +77,7 @@ h2 {
     }
 
     #share-icon {
+      transform: scale(1.2);
       &:hover {
         cursor: pointer;
         color: limegreen;
@@ -84,6 +85,7 @@ h2 {
     }
 
     #like-icon {
+      transform: scale(1.2);
       &:hover {
         cursor: pointer;
         color: deeppink;

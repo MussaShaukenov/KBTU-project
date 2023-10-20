@@ -1,79 +1,32 @@
-import React from 'react';
-import "./Trends.scss"
+import React from "react";
+import "./Trends.scss";
+import Trend from "./Trend";
 
+const trendsData = [
+    { category: "News | Trending", title: "Gaza", posts: "2.3M posts" },
+    { category: "Trending", title: "Веская причина бросить в клатче", posts: "1K posts" },
+    { category: "News | Trending", title: "Hamas", posts: "1.3M posts" },
+    { category: "Trending", title: "Танцы на Фурманова", posts: "1.3K posts" },
+    { category: "Trending", title: "Как прыгнуть в окно красиво?", posts: "325 posts" },
+    { category: "News | Trending", title: "#Israel", posts: "6M posts" },
+    { category: "Trending in Science", title: "Drunk Newton", posts: "6.7K posts" },
+    { category: "Trending", title: "The GOAT", posts: "29.9K posts" },
+    { category: "Trending in Kazakhstan", title: "Интересно", posts: "3K posts" },
+    { category: "Trending in Business & finance", title: "KPMG", posts: "2K posts" },
+    { category: "Trending", title: "Abuja", posts: "38K posts" },
+    { category: "Trending | Sports", title: "Bangladesh", posts: "103K posts" },
+    { category: "Trending", title: "Naira", posts: "80K posts" },
+];
 
 const Trends: React.FC = () => (
-    <>
-
-        <div className="trends">
-            <div><h3>Trends for you</h3></div>
-            <div className="trend-container">
-                <p>News | Trending</p>
-                <h4>Gaza</h4>
-                <p>2.3M posts</p>
-            </div>
-            <div className="trend-container">
-                <p>Trending</p>
-                <h4>Веская причина бросить в клатче</h4>
-                <p>1K posts</p>
-            </div>
-            <div className="trend-container">
-                <p>News | Trending</p>
-                <h4>Hamas</h4>
-                <p>1.3M posts</p>
-            </div>
-            <div className="trend-container">
-                <p>Trending</p>
-                <h4>Танцы на Фурманова</h4>
-                <p>1.3K posts</p>
-            </div>
-            <div className="trend-container">
-                <p>Trending</p>
-                <h4>Как прыгнуть в окно красиво?</h4>
-                <p>325 posts</p>
-            </div>
-            <div className="trend-container">
-                <p>News | Trending</p>
-                <h4>#Israel</h4>
-                <p>6M posts</p>
-            </div>
-            <div className="trend-container">
-                <p>Trending in Science</p>
-                <h4>Drunk Newton</h4>
-                <p>6.7K posts</p>
-            </div>
-            <div className="trend-container">
-                <p>Trending</p>
-                <h4>The GOAT</h4>
-                <p>29.9 K posts</p>
-            </div>
-            <div className="trend-container">
-                <p>Trending in Kazakhstan</p>
-                <h4>Интересно</h4>
-                <p>3K posts</p>
-            </div>
-            <div className="trend-container">
-                <p>Trending in Business & finance</p>
-                <h4>KPMG</h4>
-                <p>2K posts</p>
-            </div>
-            <div className="trend-container">
-                <p>Trending</p>
-                <h4>Abuja</h4>
-                <p>38K posts</p>
-            </div>
-            <div className="trend-container">
-                <p>Trending | Sports</p>
-                <h4>Bangladesh</h4>
-                <p>103K posts</p>
-            </div>
-            <div className="trend-container">
-                <p>Trending</p>
-                <h4>Naira</h4>
-                <p>80K posts</p>
-            </div>
+    <div className="trends">
+        <div>
+            <h3>Trends for you</h3>
         </div>
-    </>
+        {trendsData.map((trend, index) => (
+            <Trend key={index} {...trend} />
+        ))}
+    </div>
 );
 
 export default Trends;

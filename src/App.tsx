@@ -14,6 +14,8 @@ import Bookmark from "./components/Bookmarks/Bookmark";
 import Community from "./components/Communities/Community";
 import Tweet from "./components/Tweet/Tweet";
 import HomePage from "./components/HomePage/HomePage";
+import Explore from "./components/Explore/Explore";
+import {LogoutOutlined} from "@ant-design/icons";
 
 function App() {
     return (
@@ -25,6 +27,7 @@ function App() {
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/" element={<InitialPage/>}/>
                     <Route path="/notifications" element={<Notifications/>}/>
+                    <Route path="/explore" element={<Explore/>}/>
                     <Route path="/login/github" element={<GithubLogin/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/bookmarks" element={<Bookmark/>}/>
@@ -32,6 +35,7 @@ function App() {
                     <Route path="/tweet" element={<Tweet/>}/>
                     <Route path="*" element={<PageNotFound/>}/>
                     <Route path="home" element={<HomePage/>}/>
+                    <Route path="home" element={<LogoutOutlined/>}/>
                 </Routes>
             </Router>
         </div>

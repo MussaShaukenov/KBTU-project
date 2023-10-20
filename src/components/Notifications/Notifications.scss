@@ -12,7 +12,6 @@ $gray: rgba(5, 2, 2, 0.2);
     text-align: start;
   }
   div {
-    //border: 1px solid red;
     padding: 0em 10em;
     line-height: 3em;
     border-bottom: 1px solid $blue;
@@ -27,7 +26,7 @@ $gray: rgba(5, 2, 2, 0.2);
       font-weight: 600;
       &:hover {
         cursor: pointer;
-        //text-underline: $blue;
+        text-underline: $blue;
         text-decoration: underline;
       }
     }

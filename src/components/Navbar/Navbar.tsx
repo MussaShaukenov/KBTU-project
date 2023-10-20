@@ -10,6 +10,7 @@ import {
     SettingOutlined,
     BookOutlined,
     RocketOutlined,
+    LogoutOutlined
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Button, Menu } from 'antd';
@@ -38,9 +39,9 @@ const items: MenuItem[] = [
     getItem('Notifications', 'notifications', <BellOutlined />),
     getItem('Bookmarks', 'bookmarks', <BookOutlined />),
     getItem('Communities', 'communities', <UsergroupAddOutlined />),
-    getItem('Premium', 'premium', <RocketOutlined />),
+    // getItem('Premium', 'premium', <RocketOutlined />),
     getItem('Profile', 'profile', <UserOutlined />),
-    getItem('Settings', 'settings', <SettingOutlined />), // Corrected the key for 'Settings'
+    getItem('Logout', '', <LogoutOutlined />), // Corrected the key for 'Settings'
 ];
 
 const Navbar: React.FC = () => {
