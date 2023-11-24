@@ -1,14 +1,12 @@
 import React from 'react';
 import "./Profile.scss"
 import {EnvironmentFilled, CalendarOutlined} from '@ant-design/icons';
-import {Tabs} from "antd";
-import type {TabsProps} from 'antd';
 import LayoutContainer from "../MainPage/LayoutContainer";
 import Post from "../Post/Post";
+import {useEffect} from "react";
+import EditProfile from "./EditProfile";
+import useUserProfile from "./ProfileHook";
 
-const onChange = (key: string) => {
-    console.log(key);
-};
 
 const postThreeProps = {
     authorLogo: "https://pbs.twimg.com/profile_images/693731557299720193/z0EeBAZE_400x400.png",
@@ -20,46 +18,15 @@ const postThreeProps = {
     shares: 1200,
     likes: 25.2,
 }
-
-const items: TabsProps['items'] = [
-    {
-        key: 'posts',
-        label: 'Posts',
-        children: 'Content of Tab Pane 1',
-    },
-    {
-        key: 'replies',
-        label: 'Replies',
-        children: 'Content of Tab Pane 2',
-    },
-    {
-        key: 'highlights',
-        label: 'Highlights',
-        children: 'Content of Tab Pane 3',
-    },
-    {
-        key: 'media',
-        label: 'Media',
-        children: 'Content of Tab Pane 4',
-    },
-    {
-        key: 'likes',
-        label: 'Likes',
-        children: 'Content of Tab Pane 5',
-    },
-];
-
 const Profile: React.FC = () => {
+    const userId = '4'; // Replace with the actual user ID
+    const profileData = useUserProfile(userId);
+    useEffect(() => {}, [profileData]);
+
     return (
         <LayoutContainer>
             <div className="profile-container">
                 <div className="middlecontainer">
-                    <section className="headsec">
-                        <div>
-                            <h3>Mussa Shaukenov</h3>
-                            <span>934 Tweets</span>
-                        </div>
-                    </section>
                     <section className="twitterprofile">
                         <div className="headerprofileimage">
                             <img
@@ -68,18 +35,18 @@ const Profile: React.FC = () => {
                             <img
                                 src="https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/elon-musk-twitter-0405221.jpg"
                                 alt="profile pic" id="profilepic"/>
-                            <div className="editprofile">Edit Profile</div>
+                            <EditProfile />
                         </div>
                         <div className="bio">
                             <div className="profile-name">
-                                <div>Mussa Shaukenov (themussa)</div>
-                                <div><p>@Mthemussa</p></div>
+                                <div>{profileData.firstName} {profileData.lastName} ({profileData.username})</div>
+                                <div><p>{profileData.username}</p></div>
                             </div>
                             <div className="handle">
-                                <div><p>MSc in SWE, Software Engineer</p></div>
+                                <div><p>{profileData.bio}</p></div>
                                 <div className="location-join-info">
-                                    <div><EnvironmentFilled/> Almaty, Kazakhstan</div>
-                                    <div><CalendarOutlined/> Joined March 2023</div>
+                                    <div><EnvironmentFilled/> {profileData.location}</div>
+                                    <div><CalendarOutlined/> Joined {profileData.joined}</div>
                                 </div>
                             </div>
                             <br/>
@@ -107,7 +74,7 @@ const Profile: React.FC = () => {
                         </div>
                         <div className="tweetbody">
                             <Post {...postThreeProps}
-                                />
+                            />
                         </div>
                     </section>
                 </div>

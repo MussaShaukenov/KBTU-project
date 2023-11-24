@@ -19,8 +19,8 @@ interface LayoutContainerProps {
 }
 
 const LayoutContainer: React.FC<LayoutContainerProps> = ({ children }) => (
-    <Space direction="vertical" style={{ width: '100%' }}>
-        <Layout>
+    // <Space direction="vertical" style={{ width: '100%' }}>
+        <Layout style={{ width: "100%" }}>
             <Sider>
                 <Navbar />
             </Sider>
@@ -29,7 +29,7 @@ const LayoutContainer: React.FC<LayoutContainerProps> = ({ children }) => (
             </Layout>
             <Sidebar />
         </Layout>
-    </Space>
+    // </Space>
 );
 
 export default LayoutContainer;
