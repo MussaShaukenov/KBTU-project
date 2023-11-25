@@ -2,10 +2,11 @@ import React from 'react';
 import "./Profile.scss"
 import {EnvironmentFilled, CalendarOutlined} from '@ant-design/icons';
 import LayoutContainer from "../MainPage/LayoutContainer";
-import Post from "../Post/Post";
 import {useEffect} from "react";
 import EditProfile from "./EditProfile";
 import useUserProfile from "./ProfileHook";
+import {Tabs} from "antd";
+import TweetBody from "../Tweet/TweetBody";
 
 
 const postThreeProps = {
@@ -18,6 +19,25 @@ const postThreeProps = {
     shares: 1200,
     likes: 25.2,
 }
+
+const items = [
+    {
+        key: '1',
+        label: 'Tweets',
+        children: <TweetBody />,
+    },
+    {
+        key: '2',
+        label: 'Tab 2',
+        children: "lol"
+    },
+    {
+        key: '3',
+        label: 'Tab 3',
+        children: "content of tab 3"
+    },
+];
+
 const Profile: React.FC = () => {
     const userId = '4'; // Replace with the actual user ID
     const profileData = useUserProfile(userId);
@@ -31,10 +51,13 @@ const Profile: React.FC = () => {
                         <div className="headerprofileimage">
                             <img
                                 src="https://marketplace.canva.com/EAFK_XV_Ht8/1/0/1600w/canva-black-typographic-retro-moon-and-astronaut-twitter-header-0NTqoXhUtsE.jpg"
-                                alt="header" id="headerimage"/>
+                                alt="header" id="headerimage"/>        {profileData.avatar ? (
+                                <img src={profileData.avatar} alt="profile pic"/>
+                            ) : (
                             <img
-                                src="https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/elon-musk-twitter-0405221.jpg"
-                                alt="profile pic" id="profilepic"/>
+                                src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
+                                alt="default profile pic" id="profilepic"/>
+                            )}
                             <EditProfile />
                         </div>
                         <div className="bio">
@@ -58,24 +81,7 @@ const Profile: React.FC = () => {
                     </section>
 
                     <section className="tweets">
-                        <div className="heading">
-                            <p>Tweets</p>
-                            <p>Tweets and Replies</p>
-                            <p>Media</p>
-                            <p>Likes</p>
-                        </div>
-                    </section>
-
-                    <section className="mytweets">
-                        <div>
-                            <img
-                                src="https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/elon-musk-twitter-0405221.jpg"
-                                alt="avi" className="avi"/>
-                        </div>
-                        <div className="tweetbody">
-                            <Post {...postThreeProps}
-                            />
-                        </div>
+                        <Tabs defaultActiveKey="1" items={items} />
                     </section>
                 </div>
             </div>

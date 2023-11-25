@@ -1,26 +1,32 @@
-.tweet-container {
+.tweet-container-col {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 16px;
   border-radius: 8px;
+  border: 1px solid #ccc;
+  max-width: 35em;
+  margin-bottom: 1em;
 }
 
-.tweet-container img {
+.tweet-header {
+  display: flex;
+  align-items: flex-start;
+}
+
+.tweet-header img {
   width: 48px;
   height: 48px;
   border-radius: 50%;
   margin-right: 16px;
 }
 
-.tweet-container .ant-input-textarea {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #ccc;
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
+.tweet-container-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.tweet-container .ant-input-textarea::placeholder {
-  color: #aaa;
+.tweet-actions {
+  margin-left: auto;
+  cursor: pointer;
 }

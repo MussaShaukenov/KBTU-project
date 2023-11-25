@@ -27,10 +27,8 @@ const EditProfile: React.FC = () => {
                 username: profileData.username,
                 ...values
             }
-            console.log(valuesWithId);
             await axios.put(`http://localhost:8000/profiles/${userId}/`, valuesWithId, { withCredentials: true });
-            console.log('Profile updated successfully');
-            window.location.reload();
+            window.location.reload()
         } catch (error) {
             console.error('Error GG:', error);
         }

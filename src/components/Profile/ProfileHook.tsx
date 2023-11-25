@@ -11,7 +11,8 @@ const useUserProfile = (userId: string) => {
         bio: "",
         location: "",
         joined: "",
-        password: ""
+        password: "",
+        tweets: [],
     });
 
     useEffect(() => {
@@ -27,7 +28,8 @@ const useUserProfile = (userId: string) => {
                     bio: response.data.bio,
                     location: response.data.location,
                     joined: response.data.created_at,
-                    password: response.data.password
+                    password: response.data.password,
+                    tweets: response.data.tweets,
                 });
             })
             .catch((error) => {
