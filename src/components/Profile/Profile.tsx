@@ -24,7 +24,7 @@ const items = [
     {
         key: '1',
         label: 'Tweets',
-        children: <TweetBody />,
+        children: <TweetBody/>,
     },
     {
         key: '2',
@@ -41,7 +41,8 @@ const items = [
 const Profile: React.FC = () => {
     const userId = '4'; // Replace with the actual user ID
     const profileData = useUserProfile(userId);
-    useEffect(() => {}, [profileData]);
+    useEffect(() => {
+    }, [profileData]);
 
     return (
         <LayoutContainer>
@@ -51,14 +52,14 @@ const Profile: React.FC = () => {
                         <div className="headerprofileimage">
                             <img
                                 src="https://marketplace.canva.com/EAFK_XV_Ht8/1/0/1600w/canva-black-typographic-retro-moon-and-astronaut-twitter-header-0NTqoXhUtsE.jpg"
-                                alt="header" id="headerimage"/>        {profileData.avatar ? (
-                                <img src={profileData.avatar} alt="profile pic"/>
-                            ) : (
+                                alt="header" id="headerimage"/> {profileData.avatar ? (
+                            <img src={profileData.avatar} alt="profile pic"/>
+                        ) : (
                             <img
                                 src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
                                 alt="default profile pic" id="profilepic"/>
-                            )}
-                            <EditProfile />
+                        )}
+                            <EditProfile/>
                         </div>
                         <div className="bio">
                             <div className="profile-name">
@@ -81,7 +82,7 @@ const Profile: React.FC = () => {
                     </section>
 
                     <section className="tweets">
-                        <Tabs defaultActiveKey="1" items={items} />
+                        <Tabs defaultActiveKey="1" items={items}/>
                     </section>
                 </div>
             </div>

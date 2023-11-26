@@ -1,13 +1,14 @@
 import React from 'react';
 import "./Community.scss"
 import LayoutContainer from "../MainPage/LayoutContainer";
+import CommunityBody from "./CommunityBody";
 
 
 const Community: React.FC = () => (
     <LayoutContainer>
         <div className="community-container">
-            <div><h1>You haven’t joined any Communities yet</h1></div>
-            <div><p>When you do, you’ll see their posts here.</p></div>
+            <div><h3>Discover new communities</h3></div>
+            <div><CommunityBody/> </div>
         </div>
     </LayoutContainer>
 );
