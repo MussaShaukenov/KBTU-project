@@ -4,27 +4,17 @@ import {EnvironmentFilled, CalendarOutlined} from '@ant-design/icons';
 import LayoutContainer from "../MainPage/LayoutContainer";
 import {useEffect} from "react";
 import EditProfile from "./EditProfile";
-import useUserProfile from "./ProfileHook";
 import {Tabs} from "antd";
-import TweetBody from "../Tweet/TweetBody";
+import profile from "../../api/profile";
+import {profile_default_avatar} from "../../constants/profile";
+import {profile_default_background} from "../../constants/profile";
+import AllTweetsBody from "../Tweet/TweetsBody";
 
-
-const postThreeProps = {
-    authorLogo: "https://pbs.twimg.com/profile_images/693731557299720193/z0EeBAZE_400x400.png",
-    author: 'ESPN UK',
-    time: 'Oct 18',
-    content: "Which midfield trio are you taking? 🤔",
-    imageUrl: "https://pbs.twimg.com/media/F8vCTkKX0AE9CPe?format=jpg&name=medium",
-    comments: 1022,
-    shares: 1200,
-    likes: 25.2,
-}
-
-const items = [
+export const profile_tabs = [
     {
         key: '1',
         label: 'Tweets',
-        children: <TweetBody/>,
+        children: <AllTweetsBody/>
     },
     {
         key: '2',
@@ -38,9 +28,10 @@ const items = [
     },
 ];
 
+
 const Profile: React.FC = () => {
     const userId = '4'; // Replace with the actual user ID
-    const profileData = useUserProfile(userId);
+    const profileData = profile(userId);
     useEffect(() => {
     }, [profileData]);
 
@@ -51,12 +42,12 @@ const Profile: React.FC = () => {
                     <section className="twitterprofile">
                         <div className="headerprofileimage">
                             <img
-                                src="https://marketplace.canva.com/EAFK_XV_Ht8/1/0/1600w/canva-black-typographic-retro-moon-and-astronaut-twitter-header-0NTqoXhUtsE.jpg"
+                                src={profile_default_background}
                                 alt="header" id="headerimage"/> {profileData.avatar ? (
                             <img src={profileData.avatar} alt="profile pic"/>
                         ) : (
                             <img
-                                src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
+                                src={profile_default_avatar}
                                 alt="default profile pic" id="profilepic"/>
                         )}
                             <EditProfile/>
@@ -82,7 +73,7 @@ const Profile: React.FC = () => {
                     </section>
 
                     <section className="tweets">
-                        <Tabs defaultActiveKey="1" items={items}/>
+                        <Tabs defaultActiveKey="1" items={profile_tabs}/>
                     </section>
                 </div>
             </div>
