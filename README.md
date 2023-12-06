@@ -3,12 +3,6 @@
 ## Project Overview
 Twitter Clone is a project for **Web Development** course in Kazakh-Britsh Technical Universty, Almaty, Kazakhstan. This project is a clone of the popular social media platform Twitter. It aims to replicate key features of Twitter, providing a platform for users to share updates, interact with others, and explore content. The project is structured into a frontend and a backend, each leveraging modern technologies for robust and scalable application development.
 
-## Team Members
-- Mussa Shaukenov
-- Asfandiyar Marat
-- Akan Otebay
-- Alisher Orazbay
-
 ## Technology Stack
 
 ### Frontend
