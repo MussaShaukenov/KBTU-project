@@ -1,0 +1,14 @@
+.env
+.idea
+*.iml
+*.iws
+*.ipr
+debug.log
+db.sqlite3
+LICENSE
+CHANGELOG.md
+README.md
+.git
+.vscode/
+Dockerfile*
+venv/
