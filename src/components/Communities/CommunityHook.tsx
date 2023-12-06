@@ -1,4 +1,6 @@
-// Create a Community interface
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 interface Community {
     id: number;
     name: string;
@@ -11,10 +13,6 @@ interface Community {
     category: number;
     members: number[];
 }
-
-// Update useCommunity.tsx
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const useCommunity = () => {
     const [communityData, setCommunityData] = useState<Community[]>([]);
