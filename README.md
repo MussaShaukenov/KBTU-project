@@ -12,6 +12,29 @@ Twitter Clone is a project for **Web Development** course in Kazakh-Britsh Techn
 - **Axios**: A promise-based HTTP client for making HTTP requests from node.js or XMLHttpRequests from the browser.
 - **Ant Design**: A React UI library that contains a set of high-quality components and demos for building rich, interactive user interfaces.
 
+### React architecture
+```bash
+src/
+|-- api/
+|   |-- apiRequest1.tsx
+|   |-- apiRequest2.tsx
+|   |-- ...
+|-- components/
+|   |-- Component1/
+|   |   |-- Component1.tsx
+|   |   |-- Component1.scss
+|   |-- Component2/
+|   |   |-- Component2.tsx
+|   |   |-- Component2.scss
+|   |-- ...
+|-- constants/
+|   |-- profile.ts
+|-- index.tsx
+|-- App.tsx
+|-- index.css
+|-- App.scss
+```
+
 ### Backend
 - **Django**: A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 - **Django-Rest-Framework**: A powerful and flexible toolkit for building Web APIs.
@@ -19,6 +42,29 @@ Twitter Clone is a project for **Web Development** course in Kazakh-Britsh Techn
 - **Swagger**: An Interface Description Language for describing RESTful APIs expressed using JSON.
 - **Docker**: An open platform for developing, shipping, and running applications.
 - **Docker Compose**: A tool for defining and running multi-container Docker applications.
+
+### Django architecture
+```bash
+project/
+|-- manage.py
+|-- Dockerfile
+|-- core/
+|   |-- __init__.py
+|   |-- asgi.py
+|   |-- settings.py
+|   |-- urls.py
+|   |-- wsgi.py
+|-- app1/
+|   |-- migrations/
+|   |-- __init__.py
+|   |-- admin.py
+|   |-- apps.py
+|   |-- models.py
+|   |-- serializers.py
+|   |-- urls.py
+|   |-- views.py
+|-- ...
+```
 
 ### Database
 - **Postgres**: An open-source relational database with a strong focus on extensibility and standards compliance.
