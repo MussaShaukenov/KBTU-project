@@ -9,28 +9,54 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+    networks:
+      - djangonetwork
   
   backend:
+    container_name: backend
     build:
       context: ./backend
       dockerfile: Dockerfile
+    environment:
+      - DJANGO_ENV=production
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_PASSWORD=admin
+      - DJANGO_SUPERUSER_EMAIL=admin@example.com
+    command: sh -c "python3 manage.py migrate && python3 create_superuser.py && python3 manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
-    environment:
-      - PYTHONUNBUFFERED=1
     depends_on:
-      - db
+      db: 
+        condition: service_healthy
+    networks:
+      - djangonetwork
+    tty: true
+
 
   db:
-    image: postgres:12.1-alpine
+    image: postgres:14.10-alpine
+    container_name: postgres
     environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
-    ports:
-      - "5433:5432"
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=tsis
+      - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - postgres_data:/var/lib/postgresql/data
-  
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: pg_isready -U postgres -d tsis
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - djangonetwork
+
+networks:
+    djangonetwork:
+        driver: bridge
+
 volumes:
   postgres_data:
