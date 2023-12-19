@@ -22,7 +22,7 @@ class Community(models.Model):
     is_private = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     number_of_posts = models.IntegerField(default=0)
-    image = models.CharField(null=True)
+    image = models.CharField(null=True, max_length=255)
     category = models.ForeignKey(CommunityCategory, on_delete=models.CASCADE, related_name='communities', null=True)
 
     def __str__(self):

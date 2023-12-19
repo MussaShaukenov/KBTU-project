@@ -1,12 +1,9 @@
 from rest_framework import generics
 from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
-
+from django.db.models import Q
 from .models import Tweet, Comment
 from .serializers import TweetSerializer, CommentSerializer
-from loguru import logger
-
-logger.add("debug.log", format="{time} {level} {message}", level="DEBUG", rotation="10 MB", compression="zip")
 
 
 class TweetListCreateView(generics.ListCreateAPIView):
@@ -15,8 +12,17 @@ class TweetListCreateView(generics.ListCreateAPIView):
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
+
+        search_query = request.query_params.get('search', None)
+        if search_query:
+            queryset = queryset.filter(
+                Q(content__icontains=search_query) | 
+                Q(user__username__icontains=search_query)
+            )
+
         serializer = TweetSerializer(queryset, many=True)
         return Response(serializer.data)
+
 
     @action(detail=False, methods=['get'])
     def list_by_user_id(self, request):
@@ -42,7 +48,6 @@ class CommentRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 
 @api_view(['GET'])
 def get_user_tweets(request, user_id: int):
-    logger.info("REQUEST", user_id)
     queryset = Tweet.objects.filter(user=user_id)
     serializer = TweetSerializer(instance=queryset, many=True)
     return Response(serializer.data)

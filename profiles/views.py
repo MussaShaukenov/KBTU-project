@@ -2,10 +2,31 @@ from django.contrib.auth.hashers import make_password
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Profile
 from .serializers import ProfileSerializer
 from .permissions import *
+from rest_framework.views import APIView
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def user_login(request):
+    import json
+    data = json.loads(request.body)
+    username = data.get('username')
+    password = data.get('password')
+    
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return JsonResponse({"success": True, "message": "Login successful"})
+    else:
+        return JsonResponse({"success": False, "message": "Invalid credentials"}, status=401)
 
 
 class ProfileList(generics.ListCreateAPIView):
@@ -29,3 +50,14 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     # permission_classes = [IsAuthenticated]
+
+
+class LogoutView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        try:
+            request.user.auth_token.delete()
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
